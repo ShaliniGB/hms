@@ -1,11 +1,11 @@
 package com.hms.dao;
 
+import com.hms.model.Patient;
+
 import java.util.List;
 import java.util.Map;
 
-import com.hms.model.Patient;
-
-public interface PatientDao {
+public interface PatientDAO {
 	public List<Patient> allPatients();
 	public Patient createPatient(Patient patient);
 	public void updatePatient(Patient patient);

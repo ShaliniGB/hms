@@ -1,14 +1,13 @@
 package com.hms.rowmapper;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import com.hms.dao.impl.DoctorDAOImpl;
+import com.hms.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import com.hms.dao.impl.DoctorDAOImpl;
-import com.hms.model.Patient;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Component
 public class PatientRowMapper implements RowMapper<Patient> {
@@ -26,7 +25,7 @@ public class PatientRowMapper implements RowMapper<Patient> {
 		patient.setEmailId(rs.getString(5));
 		patient.setGender(rs.getString(6));
 		patient.setName(rs.getString(7));
-		patient.setDoctor(doctorDao.searchDoctorById(rs.getLong(8)));
+//		patient.setDoctor(doctorDao.searchByDoctorName(rs.getLong(8)));
 		return patient;
 	}
 }
