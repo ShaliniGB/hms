@@ -22,5 +22,4 @@ public class DoctorRowMapper implements RowMapper<Doctor> {
 		doctor.setName(rs.getString(8));
 		return doctor;
 	}
-
 }

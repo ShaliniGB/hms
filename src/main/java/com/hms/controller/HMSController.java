@@ -1,7 +1,9 @@
 package com.hms.controller;
 
 import com.hms.model.Doctor;
+import com.hms.model.Rooms;
 import com.hms.service.HMSInquiryService;
+import com.hms.service.RoomsInquiryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,8 @@ public class HMSController {
 	
 	@Autowired
 	HMSInquiryService service;
+	@Autowired
+	RoomsInquiryService roomService;
 	
 	@RequestMapping("/")
 	String home() {
@@ -36,6 +40,16 @@ public class HMSController {
 	@RequestMapping("/doctor/{name}")
 	Doctor searchDoctorByName(@PathVariable("name") String name) {
 		return service.searchDoctorByName(name);
+	}
+
+	@RequestMapping("/getAllRooms")
+	List<Rooms> showAllRoomsAvailability(){
+		return roomService.showAllRooms();
+	}
+
+	@RequestMapping("/room/{type}")
+	Rooms searchByRoomType(@PathVariable("name") String type){
+		return roomService.searchRoomsByType(type);
 	}
 
 }
