@@ -1,0 +1,58 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+        springCloudConnectorsVersion = '1.2.4.RELEASE'
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+
+apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
+
+apply plugin: 'org.springframework.boot'
+
+version = '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+//    compile "org.springframework.boot:spring-boot-starter-security"
+//    compile "org.springframework.boot:spring-boot-starter-security"
+//    compile "org.springframework.security.oauth:spring-security-oauth2"
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+
+    // JPA Persistence
+    compile "commons-dbcp:commons-dbcp"
+    runtime "com.h2database:h2"
+    runtime "org.apache.derby:derby:10.13.1.1"
+
+    // Testing
+    testCompile "junit:junit"
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+}
+
+jar {
+    baseName = "spring-hms"
+    version = "" // omit the version from the war file name
+}
